@@ -4,9 +4,9 @@
     <title>MYID Demo</title>
     <meta name="author" content="MYID "/>
     <link href="css/site.css" rel="stylesheet"/>
-    <script src="js/hico.js"></script>
-    <script src="js/data.js"></script>
-    <script src="js/hilz.js"></script>
+	<script src="js/hilz.js"></script>
+	<script src="js/hico.js?v=7"></script>
+
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
@@ -39,23 +39,30 @@
             url: "https://service.myid.ir/api/v1/service/websdk",
             language: "fa",
             method: "normal",
-            userId: "[REQUEST_ID]",
+            owner: "MyID",
+			sdkKey:'SDK Key Here',
+            apiKey:'Api Key HEre',
+            referenceId:'MD-'+Math.round(new Date().getTime()/1000),
+
             styles: {
-                // bgColor_form: 'red',
-                // bgColor_btn: 'black',
-                // txtColor_btn: 'white',
-                // txtColor_form: 'yellow',
                 srcImage_logo: 'https://cdn.myid.ir/public/logo-myid.png'
             },
             additional: [
-                {name: "Authorization", value: "[API_KEY]"},
+
             ]
         },
         function (isOK, code, message) {
-            if (isOK)
+		console.log(code);
+		console.log(message);
+		alert(message);
+		alert(code);
+
+		       if (isOK)
                 document.getElementById("status").innerHTML = "احراز انجام شد و صحیح است.";
             else
-                document.getElementById("status").innerHTML = "احراز انجام شد و صحیح نیست." + code + ': ' + message;
+               document.getElementById("status").innerHTML = "احراز انجام شد و صحیح نیست." + code + ': ' + message;
+
+				return ;
         }
     )
 </script>
